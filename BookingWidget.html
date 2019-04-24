@@ -1,0 +1,151 @@
+<html>
+	<head>
+			<link rel="stylesheet" href="./css_Mystays_ja-JP.css" />
+			
+	</head>
+<body>
+<div class="booking-widget-container-main" >
+<section class="gray-container">
+        <div class="hide" id="booking-widget-overlay"></div>
+        <div class="container booking-widget-container" id="booking-widget-container-one">
+
+            <div class="booking-widget-module mystays-booking-widget">
+                <div class="booking-box autocomplete">
+                    <p>Where in Japan?</p>
+                    <div class="booking-box-wrap"><input type="text" class="hotel-search-input" placeholder="City &amp; Hotel"></div>
+                    <div class="booking-search-msg-wrap hide"><a href="" data-text="Open {0} Hotel List"></a></div>
+                    <div class="hotel-search-list-wrap hide">
+                        <ul class="hotel-search-list">
+						
+						</ul>
+                        <div class="reset-search-list hide">
+                            <span><i class="ico ico-undo"></i>Show all</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-box date-picker">
+                    <p><span>Check In</span><span>Check Out</span></p>
+                    <div class="booking-box-wrap range-container mbsc-comp" id="mobiscroll1556001325082">
+                        <div class="booking-checkin-checkout">
+                            <div class="checkin bookingwidget-checkin  bookingwidget-new">
+                                <input type="text" class="calendar-checkindate" value="" data-value="">
+                                <div class="input-top-wrap">
+                                    <div class="title"></div>
+                                    <div class="desc"></div>
+                                </div>
+                            </div>
+                            <i class="icono-arrow1-left"></i>
+                            <div class="checkout bookingwidget-checkout bookingwidget-new">
+                                <input type="text" class="calendar-checkoutdate" value="" data-value="">
+                                <div class="input-top-wrap">
+                                    <div class="title"></div>
+                                    <div class="desc"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-box guests">
+                    <p>Guest No.</p>
+                    <div class="booking-box-wrap">
+                        <div class="input-top-wrap">
+                            <div class="title" data-count="2">2</div>
+                            <div class="desc">
+                                <span class="guest guests-placeholder show">Guests</span>
+                                <span class="hide guest guest-placeholder">Guest</span>
+                            </div>
+                        </div><input type="hidden" id="booking-totalguests">
+                    </div>
+                    <div class="booking-guestselect-wrap hide">
+                        <div class="booking-guestselect-heading">
+                            <span class="mbsc-ic-arrow-left5 mbsc-ic"></span>
+                            <span class="guests-placeholder show">Guests</span>
+                            <span class="hide guest-placeholder">Guest</span>
+                        </div>
+                        <div class="booking-guestselect">
+                            <div class="left">
+                                <div class="guest-row">
+                                    <p class="room"><span class="number" data-count="1">1</span><span class="room">Rooms</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                </div>
+                                <div class="guest-row">
+                                    <p class="adult"><span class="number" data-count="2">2</span><span class="adult">Adult</span></p><i class="minus"></i><i class="plus"></i>
+                                </div>
+                                    <div class="guest-row">
+                                        <p class="child"><span class="number" data-count="0">0</span><span class="child">Children</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                    </div>
+                                    <div class="child-age-info hide">Ages</div>
+                                    <ul class="chidren-ages-dropndown "></ul>
+
+                                    <div class="guest-row hide">
+                                        <p class="childhighergrade"><span class="number" data-count="0">0</span><span class="child"></span></p><i class="minus disabled"></i><i class="plus"></i>
+                                    </div>
+
+                                    <div class="guest-row hide">
+                                        <p class="childlowergrade"><span class="number" data-count="0">0</span><span class="child"></span></p><i class="minus disabled"></i><i class="plus"></i>
+                                    </div>
+
+
+
+                                    <div class="guest-row hide">
+                                        <p class="childinfant"><span class="number" data-count="0">0</span><span class="child"></span></p><i class="minus disabled"></i><i class="plus"></i>
+                                    </div>
+
+                                
+
+
+                            </div>
+                            <div class="right">
+                                
+                            </div>
+                            <div class="booking-guestselect-close"> <span>Confirm here</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-box promocode">
+                    <p>Promo Code</p>
+                    <div class="booking-box-wrap"><input type="text" class="promo-code" placeholder="----"></div>
+                </div>
+                <div class="booking-box search-button">
+                    <p>
+<a href="/en-us/hotel-best-price-guarantee/">Best Price Guarantee</a>                    </p>
+                    <button class="btn">Book Now</button>
+                </div>
+            </div>
+            <div class="calender-render-container"></div>
+        </div>
+    </section>
+	<div id="BookingWidgetConstants">
+        <!--Calendar-->
+        <input type="hidden" name="CalendarHeader" value="Calendar">
+        <input type="hidden" name="CheckinLabel" value="Check In">
+        <input type="hidden" name="CheckoutLabel" value="Check Out">
+        <input type="hidden" name="NightsOfStayDesktop" value="({days} Nights)">
+        <input type="hidden" name="NightsOfStayOneNightDesktop" value="(1 Night)">
+        <input type="hidden" name="NightsOfStayMobile" value="Ok ({days} Nights)">
+        <input type="hidden" name="NightsOfStayOneNightMobile" value="Ok (1 Night)">
+        <!--Calendar End-->
+        <!--Guest widget-->
+        <input type="hidden" name="MaximumRooms" value="8">
+        <input type="hidden" name="MaximumAdults" value="15">
+        <input type="hidden" name="MaximumChildren" value="5">
+        <input type="hidden" name="MaximumChildAge" value="12">
+        <!--Guest widget End-->
+        <!--Hotel Search-->
+        <input type="hidden" name="CityLabel" value="Cities">
+        <input type="hidden" name="HotelLabel" value="Hotels">
+        <input type="hidden" name="SearchMessageCityPlaceholder" value="Open {0} Hotel List">
+        <input type="hidden" name="SearchMessageHotelPlaceholder" value="View This Hotel Pictures &amp; Details">
+        <input type="hidden" name="MystaysAPIKey" value="">
+        <input type="hidden" name="MystaysAPIDomain" value="https://mystays.com">
+        <!--Hotel Search End-->
+        <!--Book now-->
+        <input type="hidden" name="StartDateError" value="{0} can only be booked in or after {1}">
+        <!--Book now End-->
+    </div>
+	</div>
+<script src="./mobiscroll.javascript.min.js" type="text/javascript"></script>
+			<script src="./booking-widget.js" type="text/javascript"></script>
+			<script src="./main.js" type="text/javascript"></script>
+	</body>
+
+</html>
