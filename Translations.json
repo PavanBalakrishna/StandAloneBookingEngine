@@ -31,13 +31,20 @@
 					"Key":"GuestHeaderLabel",
 					"Value":"Guest No."
 				},
-				
 				{
-					"Key":"MultiGuestLabel",
+					"Key":"MultiGuestLabel1",
 					"Value":"Guests"
 				},
 				{
-					"Key":"SingleGuestLabel",
+					"Key":"SingleGuestLabel1",
+					"Value":"Guest"
+				},
+				{
+					"Key":"MultiGuestLabel2",
+					"Value":"Guests"
+				},
+				{
+					"Key":"SingleGuestLabel2",
 					"Value":"Guest"
 				},
 				{

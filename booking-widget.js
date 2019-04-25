@@ -5,6 +5,8 @@ var MystaysBookingWidget = {
     Common: {
         //Array to hold all the booking widgets
         MystaysRangeArray: [],
+		
+		LanguageTranslation : [],
 
         //A variable used to hold the event target when user performs any event(This variable  is used to distingish if the event occured in the first or the second booking widget)
         CurrentEventTarget: null,
@@ -187,6 +189,21 @@ var MystaysBookingWidget = {
 			
 			MystaysBookingWidget.Common.AjaxCall('./Translations.json', null, 'GET', true, function (response) {
                 var translatedData = JSON.parse(response);
+				
+				
+				
+				//Getting the translation for the language
+				for(var i=0; i < translatedData.MystaysLanguages.length; i++){
+					if(MystaysBookingWidget.Common.SelectedLanguage == translatedData.MystaysLanguages[i].LanguageCode){
+						MystaysBookingWidget.Common.LanguageTranslation = translatedData.MystaysLanguages[i];
+					}
+				}
+				
+				
+				//Looping through each
+				for(var i=0; i < MystaysBookingWidget.Common.LanguageTranslation.StaticContent.length; i++){
+					document.getElementsByClassName('booking-widget-container-main')[0].innerHTML = document.getElementsByClassName('booking-widget-container-main')[0].innerHTML.replace('{{'+MystaysBookingWidget.Common.LanguageTranslation.StaticContent[i].Key+'}}', MystaysBookingWidget.Common.LanguageTranslation.StaticContent[i].Value);
+				}
             })
 			
 		}
