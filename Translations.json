@@ -1,0 +1,164 @@
+{
+	"MystaysLanguages":[
+		{
+			"LanguageCode":"en",
+			"StaticContent":[
+				{
+					"Key":"StayLabel",
+					"Value":"Where in Japan ?"
+				},
+				{
+					"Key":"CityAndHotelPlaceHolder",
+					"Value":"City & Hotel"
+				},
+				{
+					"Key":"ShowAllLabel",
+					"Value":"Show All"
+				},
+				{
+					"Key":"OpenHotelLabel",
+					"Value":"Open {0} "
+				},
+				{
+					"Key":"CheckInLabel",
+					"Value":"Check In"
+				},
+				{
+					"Key":"CheckOutLabel",
+					"Value":"Check Out"
+				},
+				{
+					"Key":"GuestHeaderLabel",
+					"Value":"Guest No."
+				},
+				
+				{
+					"Key":"MultiGuestLabel",
+					"Value":"Guests"
+				},
+				{
+					"Key":"SingleGuestLabel",
+					"Value":"Guest"
+				},
+				{
+					"Key":"RoomsLabel",
+					"Value":"Rooms"
+				},
+				{
+					"Key":"AdultsLabel",
+					"Value":"Adults"
+				},
+				{
+					"Key":"ChildrenLabel",
+					"Value":"Children"
+				},
+				{
+					"Key":"ChildAgeLabel",
+					"Value":"Ages"
+				},
+				{
+					"Key":"ChildrenHigherLabel",
+					"Value":""
+				},
+				{
+					"Key":"ChildrenLowerLabel",
+					"Value":""
+				},
+				{
+					"Key":"ChildrenInfantLabel",
+					"Value":""
+				},
+				{
+					"Key":"GuestConfirmLabel",
+					"Value":"Confirm here"
+				},
+				{
+					"Key":"PromoCodeHeaderLabel",
+					"Value":"Promo Code"
+				},
+				{
+					"Key":"BookNowButtonLabel",
+					"Value":"Book Now"
+				}
+				
+			],
+			"DynamicContent":[
+				{
+					"Key":"CalendarHeader",
+					"Value":"Calendar"
+				},
+				{
+					"Key":"CheckinLabel",
+					"Value":"Check In"
+				},
+				{
+					"Key":"CheckoutLabel",
+					"Value":"Check Out"
+				},
+				{
+					"Key":"NightsOfStayDesktop",
+					"Value":"({days} Nights)"
+				},
+				{
+					"Key":"NightsOfStayOneNightDesktop",
+					"Value":"(1 Night)"
+				},
+				{
+					"Key":"NightsOfStayMobile",
+					"Value":"Ok ({days} Nights)"
+				},
+				{
+					"Key":"NightsOfStayOneNightMobile",
+					"Value":"Ok (1 Night)"
+				},
+				{
+					"Key":"MaximumRooms",
+					"Value":""
+				},
+				{
+					"Key":"MaximumAdults",
+					"Value":""
+				},
+				{
+					"Key":"MaximumChildren",
+					"Value":""
+				},
+				{
+					"Key":"MaximumChildAge",
+					"Value":""
+				},
+				{
+					"Key":"CityLabel",
+					"Value":"Cities"
+				},
+				{
+					"Key":"HotelLabel",
+					"Value":"Hotels"
+				},
+				{
+					"Key":"SearchMessageCityPlaceholder",
+					"Value":"Open {0} Hotel List"
+				},
+				{
+					"Key":"SearchMessageHotelPlaceholder",
+					"Value":"View This Hotel Pictures &amp; Details"
+				},
+				{
+					"Key":"MystaysAPIKey",
+					"Value":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6InNpdGVjb3JlXFxhZG1pbiIsImlzcyI6Ik15c3RheXMiLCJhdWQiOiJodHRwOi8vYXV0aG9yaW5nLm15c3RheXMuY29tLyIsImV4cCI6MTgzMjU2MzEzNCwibmJmIjoxNTE3MjAzMTM0fQ.n1ei2WTbLJ_hHAdc6I8c9Ra0gTp4MWcP_wpvWWqRP7c"
+				},
+				{
+					"Key":"MystaysAPIDomain",
+					"Value":"http://mystays.local"
+				},
+				{
+					"Key":"StartDateError",
+					"Value":"{0} can only be booked in or after {1}"
+				}
+				
+			]
+		}
+	]
+
+
+}

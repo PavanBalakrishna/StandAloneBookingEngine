@@ -11,21 +11,21 @@
 
             <div class="booking-widget-module mystays-booking-widget">
                 <div class="booking-box autocomplete">
-                    <p>{{StayLabel}}</p>
-                    <div class="booking-box-wrap"><input type="text" class="hotel-search-input" placeholder="{{CityAndHotelPlaceHolder}}"></div>
-                    <div class="booking-search-msg-wrap hide"><a href="" data-text="{{OpenHotelLabel}}"></a></div>
+                    <p>Where in Japan?</p>
+                    <div class="booking-box-wrap"><input type="text" class="hotel-search-input" placeholder="City &amp; Hotel"></div>
+                    <div class="booking-search-msg-wrap hide"><a href="" data-text="Open {0} Hotel List"></a></div>
                     <div class="hotel-search-list-wrap hide">
                         <ul class="hotel-search-list">
 						
 						</ul>
                         <div class="reset-search-list hide">
-                            <span><i class="ico ico-undo"></i>{{ShowAllLabel}}</span>
+                            <span><i class="ico ico-undo"></i>Show all</span>
                         </div>
                     </div>
                 </div>
                 <div class="booking-box date-picker">
-                    <p><span>{{CheckInLabel}}</span><span>{{CheckOutLabel}}</span></p>
-                    <div class="booking-box-wrap range-container mbsc-comp">
+                    <p><span>Check In</span><span>Check Out</span></p>
+                    <div class="booking-box-wrap range-container mbsc-comp" id="mobiscroll1556001325082">
                         <div class="booking-checkin-checkout">
                             <div class="checkin bookingwidget-checkin  bookingwidget-new">
                                 <input type="text" class="calendar-checkindate" value="" data-value="">
@@ -46,48 +46,48 @@
                     </div>
                 </div>
                 <div class="booking-box guests">
-                    <p>{{GuestHeaderLabel}}</p>
+                    <p>Guest No.</p>
                     <div class="booking-box-wrap">
                         <div class="input-top-wrap">
                             <div class="title" data-count="2">2</div>
                             <div class="desc">
-                                <span class="guest guests-placeholder show">{{MultiGuestLabel}}</span>
-                                <span class="hide guest guest-placeholder">{{SingleGuestLabel}}</span>
+                                <span class="guest guests-placeholder show">Guests</span>
+                                <span class="hide guest guest-placeholder">Guest</span>
                             </div>
                         </div><input type="hidden" id="booking-totalguests">
                     </div>
                     <div class="booking-guestselect-wrap hide">
                         <div class="booking-guestselect-heading">
                             <span class="mbsc-ic-arrow-left5 mbsc-ic"></span>
-                            <span class="guests-placeholder show">{{MultiGuestLabel}}</span>
-                            <span class="hide guest-placeholder">{{SingleGuestLabel}}</span>
+                            <span class="guests-placeholder show">Guests</span>
+                            <span class="hide guest-placeholder">Guest</span>
                         </div>
                         <div class="booking-guestselect">
                             <div class="left">
                                 <div class="guest-row">
-                                    <p class="room"><span class="number" data-count="1">1</span><span class="room">{{RoomsLabel}}</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                    <p class="room"><span class="number" data-count="1">1</span><span class="room">Rooms</span></p><i class="minus disabled"></i><i class="plus"></i>
                                 </div>
                                 <div class="guest-row">
-                                    <p class="adult"><span class="number" data-count="2">2</span><span class="adult">{{AdultsLabel}}</span></p><i class="minus"></i><i class="plus"></i>
+                                    <p class="adult"><span class="number" data-count="2">2</span><span class="adult">Adult</span></p><i class="minus"></i><i class="plus"></i>
                                 </div>
                                     <div class="guest-row">
-                                        <p class="child"><span class="number" data-count="0">0</span><span class="child">{{ChildrenLabel}}</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                        <p class="child"><span class="number" data-count="0">0</span><span class="child">Children</span></p><i class="minus disabled"></i><i class="plus"></i>
                                     </div>
-                                    <div class="child-age-info hide">{{ChildAgeLabel}}</div>
+                                    <div class="child-age-info hide">Ages</div>
                                     <ul class="chidren-ages-dropndown "></ul>
 
                                     <div class="guest-row hide">
-                                        <p class="childhighergrade"><span class="number" data-count="0">0</span><span class="child">{{ChildrenHigherLabel}}</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                        <p class="childhighergrade"><span class="number" data-count="0">0</span><span class="child"></span></p><i class="minus disabled"></i><i class="plus"></i>
                                     </div>
 
                                     <div class="guest-row hide">
-                                        <p class="childlowergrade"><span class="number" data-count="0">0</span><span class="child">{{ChildrenLowerLabel}}</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                        <p class="childlowergrade"><span class="number" data-count="0">0</span><span class="child"></span></p><i class="minus disabled"></i><i class="plus"></i>
                                     </div>
 
 
 
                                     <div class="guest-row hide">
-                                        <p class="childinfant"><span class="number" data-count="0">0</span><span class="child">{{ChildrenInfantLabel}}</span></p><i class="minus disabled"></i><i class="plus"></i>
+                                        <p class="childinfant"><span class="number" data-count="0">0</span><span class="child"></span></p><i class="minus disabled"></i><i class="plus"></i>
                                     </div>
 
                                 
@@ -97,18 +97,18 @@
                             <div class="right">
                                 
                             </div>
-                            <div class="booking-guestselect-close"> <span>{{GuestConfirmLabel}}</span></div>
+                            <div class="booking-guestselect-close"> <span>Confirm here</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="booking-box promocode">
-                    <p>{{PromoCodeHeaderLabel}}</p>
+                    <p>Promo Code</p>
                     <div class="booking-box-wrap"><input type="text" class="promo-code" placeholder="----"></div>
                 </div>
                 <div class="booking-box search-button">
                     <p>
-                 </p>
-                    <button class="btn">{{BookNowButtonLabel}}</button>
+<a href="/en-us/hotel-best-price-guarantee/">Best Price Guarantee</a>                    </p>
+                    <button class="btn">Book Now</button>
                 </div>
             </div>
             <div class="calender-render-container"></div>

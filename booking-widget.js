@@ -180,7 +180,16 @@ var MystaysBookingWidget = {
                     return true;
                 }
             }
-        }
+        },
+		
+		//Function to update all static labels on the HTML
+		UpdateStaticLabels:function(){
+			
+			MystaysBookingWidget.Common.AjaxCall('./Translations.json', null, 'GET', true, function (response) {
+                var translatedData = JSON.parse(response);
+            })
+			
+		}
     },
     //All generic helper methods
     Helper: {
@@ -3746,6 +3755,8 @@ var MystaysBookingWidget = {
             } else if (selectedLanguage == 'ko-kr') {
                 MystaysBookingWidget.Common.SelectedLanguage = 'ko';
             }
+			
+			MystaysBookingWidget.Common.UpdateStaticLabels();
 
 
             //Adding additional space(' ') just for safety
