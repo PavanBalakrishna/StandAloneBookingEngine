@@ -137,7 +137,7 @@ var MystaysBookingWidget = {
                 
             }
 
-            return MystaysBookingWidget.Common.RangeResponsive
+            return MystaysBookingWidget.Common.RangeResponsive;
         },
         //Set the format for the 'dateWheels' property of the range Object
         GetDateWheelFormat: function () {
@@ -185,7 +185,7 @@ var MystaysBookingWidget = {
         },
 		
 		//Function to update all static labels on the HTML
-		UpdateStaticLabels:function(){
+		UpdateStaticLabels:function UpdateStaticLabels(){
 			
 			MystaysBookingWidget.Common.AjaxCall('./Translations.json', null, 'GET', true, function (response) {
                 var translatedData = JSON.parse(response);
@@ -200,7 +200,7 @@ var MystaysBookingWidget = {
 				}
 				
 				
-				//Looping through each
+				//Looping through each key and replacing the placeholders with the value
 				for(var i=0; i < MystaysBookingWidget.Common.LanguageTranslation.StaticContent.length; i++){
 					document.getElementsByClassName('booking-widget-container-main')[0].innerHTML = document.getElementsByClassName('booking-widget-container-main')[0].innerHTML.replace('{{'+MystaysBookingWidget.Common.LanguageTranslation.StaticContent[i].Key+'}}', MystaysBookingWidget.Common.LanguageTranslation.StaticContent[i].Value);
 				}
@@ -432,10 +432,11 @@ var MystaysBookingWidget = {
         //Get translation from hidden field
         GetTranslation: function GetTranslation(name) {
 
-            var translationTxt = document.querySelector('#BookingWidgetConstants input[name=' + name + ']');
-            if (translationTxt) {
-                return translationTxt.value;
-            }
+            for(var i=0; i< MystaysBookingWidget.Common.LanguageTranslation.DynamicContent.length; i++){
+				if(MystaysBookingWidget.Common.LanguageTranslation.DynamicContent[i].Key == name){
+					return MystaysBookingWidget.Common.LanguageTranslation.DynamicContent[i].Value;
+				}
+			}
         },
 
         //Method to check if a node has a class
@@ -851,7 +852,7 @@ var MystaysBookingWidget = {
                         else if (MystaysBookingWidget.Common.SelectedLanguage === 'en') {
                             htmlString = htmlString.replace('{endday}', MystaysBookingWidget.Helper.GetCustomText(MystaysBookingWidget.BookingCalendar.Constants.DayPrependText) + MystaysBookingWidget.BookingCalendar.Constants.EnglishDayNamesShort[endDate.getDay()]);
                             htmlString = htmlString.replace('{enddate}', ('0' + endDate.getDate()).slice(-2) + MystaysBookingWidget.Helper.GetCustomText(MystaysBookingWidget.BookingCalendar.Constants.DateText));
-                            htmlString = htmlString.replace('{endmonth}', MystaysBookingWidget.BookingCalendar.Constants.EnglishMonthNamesShort[endDate.getMonth()]);
+                            htmlString = htmlString.replace('{endmonth}', (endDate.getMonth() + 1) + MystaysBookingWidget.Helper.GetCustomText(MystaysBookingWidget.BookingCalendar.Constants.MonthText));
                             htmlString = htmlString.replace('{endyear}', endDate.getFullYear());
                         } else if (MystaysBookingWidget.Common.SelectedLanguage === 'zh') {
                             htmlString = htmlString.replace('{endday}', MystaysBookingWidget.Helper.GetCustomText(MystaysBookingWidget.BookingCalendar.Constants.DayPrependText) + mobiscroll.i18n.zh.dayNamesShort[endDate.getDay()]);
@@ -1538,6 +1539,12 @@ var MystaysBookingWidget = {
             },
             MultiGuestPlaceholderAll: function () {
                 return ' .guests-placeholder';
+            },
+			TravelClickChildrenSection: function () {
+                return ' .guestsection-tc';
+            },
+			RWithChildrenSection: function () {
+                return ' .guestsection-rwith';
             },
             MaximumRooms: function () {
                 var maxRooms = MystaysBookingWidget.Helper.GetTranslation('MaximumRooms')
@@ -2671,6 +2678,22 @@ var MystaysBookingWidget = {
                 document.querySelector(MystaysBookingWidget.Common.BookingWidgetContainer()).classList.remove('mystays-bookingwidget-active');
             })
         },
+		
+		//Function to show and hide the child section based on the booking wngine
+		UpdateChildSection:function UpdateChildSection(){
+			var childSections=null;
+			if(MystaysBookingWidget.Common.UseTravelClickBookingEngine()){
+				childSections = document.querySelectorAll(MystaysBookingWidget.GuestsWidget.Constants.TravelClickChildrenSection());
+			}
+			else{
+				childSections = document.querySelectorAll(MystaysBookingWidget.GuestsWidget.Constants.RWithChildrenSection());
+			}
+			
+			for(var i=0; i< childSections.length; i++){
+					childSections[i].ShowElement();
+			}
+			
+		},
         //Method called on document ready to invoke guest wigdget functionality
         Loaded: function Loaded() {
 
@@ -2803,7 +2826,7 @@ var MystaysBookingWidget = {
 
         CustomHTMLEvents: {
 
-            HotelSearchFocus: function HotelSearchFocus(ClearInputOnFocus) {
+            HotelSearchFocus: function HotelSearchFocus() {
                 document.querySelector(MystaysBookingWidget.HotelSearch.Constants.SearchInputClass()).addEventListener('focus', function (e, args) {
                     MystaysBookingWidget.Common.CurrentEventTarget = e.target;
 
@@ -2820,9 +2843,7 @@ var MystaysBookingWidget = {
                     //Hiding guests section if it is shown
                     MystaysBookingWidget.GuestsWidget.ShowGuestSection(false);
 
-                    if (ClearInputOnFocus) {
-                        e.target.value = '';
-                    }
+                   
                     var filteredHotelsList = MystaysBookingWidget.HotelSearch.LoadSearchResults(e.target.value);
                     MystaysBookingWidget.HotelSearch.BindHotelsCityData(filteredHotelsList);
 
@@ -3079,9 +3100,9 @@ var MystaysBookingWidget = {
 
         ////Binding Start
         //Method to initialize autocomplete
-        InitializeAutocomplete: function (ClearInputOnFocus) {
+        InitializeAutocomplete: function () {
             //Attaching focus event
-            MystaysBookingWidget.HotelSearch.CustomHTMLEvents.HotelSearchFocus(ClearInputOnFocus);
+            MystaysBookingWidget.HotelSearch.CustomHTMLEvents.HotelSearchFocus();
             //Bind autocomplete to input search
             MystaysBookingWidget.HotelSearch.CustomHTMLEvents.HotelSearchKeyUp();
             MystaysBookingWidget.HotelSearch.CustomHTMLEvents.HotelSearchKeyDown();
@@ -3427,8 +3448,8 @@ var MystaysBookingWidget = {
         },
         ////Binding End
 
-        Loaded: function (ClearInputOnFocus) {
-            MystaysBookingWidget.HotelSearch.InitializeAutocomplete(ClearInputOnFocus);
+        Loaded: function () {
+            MystaysBookingWidget.HotelSearch.InitializeAutocomplete();
         }
     },
 
@@ -3742,14 +3763,14 @@ var MystaysBookingWidget = {
     },
 
     //This function is to be used when loading a booking widget with a preselected hotel
-    LoadedWithPreselectedHotel: function LoadedWithPreselectedHotel(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer, WidgetScrollToTop, LoadNewRange, KeepCalendarClosed, ClearInputOnFocus) {
+    LoadedWithPreselectedHotel: function LoadedWithPreselectedHotel(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer) {
         MystaysBookingWidget.Common.CurrentEventTarget = document.querySelector(BookingWidgetContainer);
 
-        if (LoadNewRange) {
-            MystaysBookingWidget.Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer, WidgetScrollToTop, ClearInputOnFocus);
-            //Attaching the event to fire hotel select
-            MystaysBookingWidget.HotelSearch.CustomHTMLEvents.HotelItemClick(true, KeepCalendarClosed);
-        }
+        
+        MystaysBookingWidget.Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer);
+        //Attaching the event to fire hotel select
+        MystaysBookingWidget.HotelSearch.CustomHTMLEvents.HotelItemClick(true, KeepCalendarClosed);
+        
 
 
         var activeElement = document.querySelector(MystaysBookingWidget.HotelSearch.Constants.HotelBindListDefault() + ' .active');
@@ -3757,7 +3778,7 @@ var MystaysBookingWidget = {
     },
 
     //Main initialization function
-    Loaded: function Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer, WidgetScrollToTop, ClearInputOnFocus) {
+    Loaded: function Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer) {
         if (document.querySelector(BookingWidgetContainer)) {
 
             selectedLanguage = selectedLanguage.toLowerCase();
@@ -3774,6 +3795,8 @@ var MystaysBookingWidget = {
             }
 			
 			MystaysBookingWidget.Common.UpdateStaticLabels();
+			
+			
 
 
             //Adding additional space(' ') just for safety
@@ -3793,11 +3816,12 @@ var MystaysBookingWidget = {
             }
 
             MystaysBookingWidget.Helper.Loaded();
+			MystaysBookingWidget.GuestsWidget.UpdateChildSection();
             MystaysRangeObj = MystaysBookingWidget.BookingCalendar.Loaded(BookingWidgetContainer);
             MystaysBookingWidget.Common.MystaysRangeArray.push(MystaysRangeObj);
             MystaysBookingWidget.GuestsWidget.Loaded();
             if (SearchHotels) {
-                MystaysBookingWidget.HotelSearch.Loaded(ClearInputOnFocus);
+                MystaysBookingWidget.HotelSearch.Loaded();
             }
 
             MystaysBookingWidget.BookNowButton.Loaded();
