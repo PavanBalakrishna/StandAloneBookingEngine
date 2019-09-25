@@ -3,22 +3,7 @@
 		{
 			"LanguageCode":"en",
 			"StaticContent":[
-				{
-					"Key":"StayLabel",
-					"Value":"Where in Japan ?"
-				},
-				{
-					"Key":"CityAndHotelPlaceHolder",
-					"Value":"City & Hotel"
-				},
-				{
-					"Key":"ShowAllLabel",
-					"Value":"Show All"
-				},
-				{
-					"Key":"OpenHotelLabel",
-					"Value":"Open {0} "
-				},
+				
 				{
 					"Key":"CheckInLabel",
 					"Value":"Check In"
@@ -133,34 +118,6 @@
 				{
 					"Key":"MaximumChildAge",
 					"Value":"12"
-				},
-				{
-					"Key":"CityLabel",
-					"Value":"Cities"
-				},
-				{
-					"Key":"HotelLabel",
-					"Value":"Hotels"
-				},
-				{
-					"Key":"SearchMessageCityPlaceholder",
-					"Value":"Open {0} Hotel List"
-				},
-				{
-					"Key":"SearchMessageHotelPlaceholder",
-					"Value":"View This Hotel Pictures &amp; Details"
-				},
-				{
-					"Key":"MystaysAPIKey",
-					"Value":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6InNpdGVjb3JlXFxhZG1pbiIsImlzcyI6Ik15c3RheXMiLCJhdWQiOiJodHRwOi8vYXV0aG9yaW5nLm15c3RheXMuY29tLyIsImV4cCI6MTgzMjU2MzEzNCwibmJmIjoxNTE3MjAzMTM0fQ.n1ei2WTbLJ_hHAdc6I8c9Ra0gTp4MWcP_wpvWWqRP7c"
-				},
-				{
-					"Key":"MystaysAPIDomain",
-					"Value":"http://mystays9.local"
-				},
-				{
-					"Key":"StartDateError",
-					"Value":"{0} can only be booked in or after {1}"
 				}
 				
 			]
@@ -168,22 +125,7 @@
 		{
 			"LanguageCode":"ja",
 			"StaticContent":[
-				{
-					"Key":"StayLabel",
-					"Value":"宿泊地"
-				},
-				{
-					"Key":"CityAndHotelPlaceHolder",
-					"Value":"ホテル"
-				},
-				{
-					"Key":"ShowAllLabel",
-					"Value":"すべて表示"
-				},
-				{
-					"Key":"OpenHotelLabel",
-					"Value":"Open {0} "
-				},
+				
 				{
 					"Key":"CheckInLabel",
 					"Value":"チェックイン"
@@ -298,34 +240,6 @@
 				{
 					"Key":"MaximumChildAge",
 					"Value":"12"
-				},
-				{
-					"Key":"CityLabel",
-					"Value":"Cities"
-				},
-				{
-					"Key":"HotelLabel",
-					"Value":"Hotels"
-				},
-				{
-					"Key":"SearchMessageCityPlaceholder",
-					"Value":"Open {0} Hotel List"
-				},
-				{
-					"Key":"SearchMessageHotelPlaceholder",
-					"Value":"View This Hotel Pictures &amp; Details"
-				},
-				{
-					"Key":"MystaysAPIKey",
-					"Value":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6InNpdGVjb3JlXFxhZG1pbiIsImlzcyI6Ik15c3RheXMiLCJhdWQiOiJodHRwOi8vYXV0aG9yaW5nLm15c3RheXMuY29tLyIsImV4cCI6MTgzMjU2MzEzNCwibmJmIjoxNTE3MjAzMTM0fQ.n1ei2WTbLJ_hHAdc6I8c9Ra0gTp4MWcP_wpvWWqRP7c"
-				},
-				{
-					"Key":"MystaysAPIDomain",
-					"Value":"http://mystays9.local"
-				},
-				{
-					"Key":"StartDateError",
-					"Value":"{0} can only be booked in or after {1}"
 				}
 				
 			]
