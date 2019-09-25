@@ -130,7 +130,7 @@ var MystaysBookingWidget = {
 
                 
                     MystaysBookingWidget.Common.RangeResponsive = {
-                        BreakPoint: 768,
+                        BreakPoint: 568,
                         Month: 2,
                         CalendarWidth: 654
                     }
@@ -187,7 +187,7 @@ var MystaysBookingWidget = {
 		//Function to update all static labels on the HTML
 		UpdateStaticLabels:function UpdateStaticLabels(){
 			
-			MystaysBookingWidget.Common.AjaxCall('./Translations.json', null, 'GET', true, function (response) {
+			MystaysBookingWidget.Common.AjaxCall('./Assets/BookingWidget/scripts/Translations.json', null, 'GET', true, function (response) {
                 var translatedData = JSON.parse(response);
 				
 				
@@ -2975,7 +2975,7 @@ var MystaysBookingWidget = {
     
 
     //Main initialization function
-    Loaded: function Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer) {
+    Loaded: function Loaded(selectedLanguage,  BookingWidgetContainer) {
         if (document.querySelector(BookingWidgetContainer)) {
 
             selectedLanguage = selectedLanguage.toLowerCase();

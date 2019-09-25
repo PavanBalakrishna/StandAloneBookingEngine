@@ -1,1 +1,1 @@
-MystaysBookingWidget.Loaded("ja-jp", true, true, '#booking-widget-container-one');
+MystaysBookingWidget.Loaded("en", true, true, '#booking-widget-container-one');
