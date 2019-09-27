@@ -187,7 +187,7 @@ var MystaysBookingWidget = {
 		//Function to update all static labels on the HTML
 		UpdateStaticLabels:function UpdateStaticLabels(){
 			
-			MystaysBookingWidget.Common.AjaxCall('./Assets/BookingWidget/scripts/Translations.json', null, 'GET', true, function (response) {
+			MystaysBookingWidget.Common.AjaxCall(MystaysBookingWidget.Common.Constants.TranslationsPath, null, 'GET', true, function (response) {
                 var translatedData = JSON.parse(response);
 				
 				
@@ -3778,7 +3778,7 @@ var MystaysBookingWidget = {
     },
 
     //Main initialization function
-    Loaded: function Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer) {
+    Loaded: function Loaded(selectedLanguage, FilterCities, SearchHotels, BookingWidgetContainer, TranslationsPath) {
         if (document.querySelector(BookingWidgetContainer)) {
 
             selectedLanguage = selectedLanguage.toLowerCase();
@@ -3793,6 +3793,8 @@ var MystaysBookingWidget = {
             } else if (selectedLanguage == 'ko-kr') {
                 MystaysBookingWidget.Common.SelectedLanguage = 'ko';
             }
+			
+			MystaysBookingWidget.Common.Constants.TranslationsPath=TranslationsPath;
 			
 			MystaysBookingWidget.Common.UpdateStaticLabels();
 			
