@@ -187,7 +187,7 @@ var MystaysBookingWidget = {
 		//Function to update all static labels on the HTML
 		UpdateStaticLabels:function UpdateStaticLabels(){
 			
-			MystaysBookingWidget.Common.AjaxCall('./Translations.json', null, 'GET', true, function (response) {
+			MystaysBookingWidget.Common.AjaxCall('./Assets/BookingWidget/scripts/Translations.json', null, 'GET', true, function (response) {
                 var translatedData = JSON.parse(response);
 				
 				

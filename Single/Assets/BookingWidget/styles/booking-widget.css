@@ -6186,3 +6186,8 @@
   display: block;
 }
 
+@media screen and (max-width: 767px) {
+   .mbsc-fr .mbsc-fr-persp {
+       height:100vh!important
+   }
+}
