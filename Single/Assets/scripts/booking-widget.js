@@ -44,6 +44,22 @@ var MystaysBookingWidget = {
                 return MystaysBookingWidget.Common.BookingWidgetContainerID;
             }
         },
+        APITargetLanguage: function APITargetLanguage() {
+            if (MystaysBookingWidget.Common.SelectedLanguage === 'en') {
+                return 'en';
+            }
+            else if (MystaysBookingWidget.Common.SelectedLanguage === 'ja') {
+                return 'ja-jp';
+            } else if (MystaysBookingWidget.Common.SelectedLanguage === 'ko') {
+                return 'ko-kr';
+            } else if (MystaysBookingWidget.Common.SelectedLanguage === 'zh') {
+                return 'zh-cn';
+            } else if (MystaysBookingWidget.Common.SelectedLanguage === 'tw') {
+                return 'zh-tw';
+            }
+
+
+        },
 
         //Identifying the correct range object based on the MystaysBookingWidget.Common.BookingWidgetContainer()
         CurrentRangeObject: function CurrentRangeObject() {
@@ -2741,6 +2757,73 @@ var MystaysBookingWidget = {
             }
         },
 
+        FireUniversalTracker: function FireUniversalTracker(eventValue) {
+            try {
+                var bookingWidgetObject = {};
+
+                var adultElement = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.AdultElement()).children[0];
+                var childrenElement = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.ChildElement()).children[0];
+                var childrenElementHigher = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.ChildElementHigher()).children[0];
+                var childrenElementLower = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.ChildElementLower()).children[0];
+                var childrenElementInfant = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.ChildElementInfant()).children[0];
+                var roomsElement = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.RoomElement()).children[0];
+                var hotelcity = new Object();
+                hotelcity.RWIthCode = document.getElementById('RWIthCode').value;
+                hotelcity.TravelClickBookingID = document.getElementById('TravelClickBookingID').value;
+                var promoCodeValue = MystaysBookingWidget.Helper.GetCookie('promocode');
+
+
+
+
+
+                //Not successful search
+                if (hotelcity === null) {
+                    bookingWidgetObject = {
+                        IsSuccessfulSearch: false,
+                        BookingWidgetItemID: null
+                    };
+
+                    if (MystaysBookingWidget.Common.SelectedLanguage.toLowerCase() === 'ja') {
+                        bookingWidgetObject.BookingWidgetAdults = adultElement.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildrenHigher = childrenElementHigher.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildrenLower = childrenElementLower.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildrenInfant = childrenElementInfant.getAttribute('data-count');
+                    } else {
+                        bookingWidgetObject.BookingWidgetAdults = adultElement.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildren = childrenElement.getAttribute('data-count');
+                    }
+
+                } else {
+
+                    bookingWidgetObject = {
+                        IsSuccessfulSearch: true
+                    };
+
+                    if (!MystaysBookingWidget.Common.UseTravelClickBookingEngine()) {
+                        bookingWidgetObject.BookingWidgetItemID = hotelcity.RWIthCode;
+                        bookingWidgetObject.BookingWidgetAdults = adultElement.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildrenHigher = childrenElementHigher.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildrenLower = childrenElementLower.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildrenInfant = childrenElementInfant.getAttribute('data-count');
+                    } else {
+                        bookingWidgetObject.BookingWidgetItemID = hotelcity.TravelClickBookingID;
+                        bookingWidgetObject.BookingWidgetAdults = adultElement.getAttribute('data-count');
+                        bookingWidgetObject.BookingWidgetChildren = childrenElement.getAttribute('data-count');
+                    }
+                }
+
+                bookingWidgetObject.BookingWidgetSearchText = null;
+                bookingWidgetObject.BookingWidgetStartDate = MystaysBookingWidget.Common.CurrentRangeObject()._startDate;
+                bookingWidgetObject.BookingWidgetEndDate = MystaysBookingWidget.Common.CurrentRangeObject()._endDate;
+                bookingWidgetObject.BookingWidgetRooms = roomsElement.getAttribute('data-count');
+
+                bookingWidgetObject.BookingWidgetPromoCode = promoCodeValue;
+                UniversalTracking.Tracking.FireBookingWidgetClick(eventValue, bookingWidgetObject, MystaysBookingWidget.Common.APITargetLanguage().toLowerCase(), 2);
+            } catch (e) {
+                console.log(e);
+            }
+        },
+
         CustomHTMLEvents: {
             //Event fired when user clicks the book now button
             BooknowButtonClick: function BooknowButtonClick() {
@@ -2785,7 +2868,11 @@ var MystaysBookingWidget = {
 
         //Method to load promocode from 
         LoadPromoCode: function LoadPromoCode() {
-            var promocode = MystaysBookingWidget.Helper.GetCookie('promocode');
+           var promocode = MystaysBookingWidget.Helper.GetQueryString('promo');
+
+            if (!promocode) {
+                var promocode = MystaysBookingWidget.Helper.GetCookie('promocode');
+            }
 
             if (promocode) {
                 document.querySelector(MystaysBookingWidget.BookNowButton.Constants.PromoCodeField()).value = promocode;
@@ -2796,7 +2883,7 @@ var MystaysBookingWidget = {
         //Validation to check if the form data is present
         ValidateBooknowForm: function ValidateBooknowForm() {
             var formOk = true;
-            
+            var eventValue = null;
 
             
 
@@ -2810,7 +2897,9 @@ var MystaysBookingWidget = {
                 return formOk;
             }
 
-            
+            //Fire Universal tracker
+            MystaysBookingWidget.BookNowButton.FireUniversalTracker(eventValue);
+
 
             //Adding analytics call
             if (formOk && typeof (mystays) != 'undefined' && mystays.analytics && mystays.analytics.addBookingRecord) {
@@ -2929,6 +3018,15 @@ var MystaysBookingWidget = {
             //Appending CID(For tracking)
             if (MystaysBookingWidget.Helper.GetQueryString('cid')) {
                 bookingengineurl = bookingengineurl + "&cid=" + MystaysBookingWidget.Helper.GetQueryString('cid');
+            }
+
+            //Universal tracking code logic
+
+            if (UniversalTracking.Constants.TrackingCode != null) {
+                bookingengineurl = bookingengineurl + "&UTCode=" + UniversalTracking.Constants.TrackingCode;
+            }
+            if (UniversalTracking.Constants.ContactID != null) {
+                bookingengineurl = bookingengineurl + "&UTContact=" + UniversalTracking.Constants.ContactID;
             }
 
             return bookingengineurl;
