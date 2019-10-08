@@ -3041,7 +3041,7 @@ var MystaysBookingWidget = {
                 var hotelcity = new Object();
                 hotelcity.RWIthCode = document.getElementById('RWIthCode').value;
                 hotelcity.TravelClickBookingID = document.getElementById('TravelClickBookingID').value;
-                var promoCodeValue = MystaysBookingWidget.Helper.GetCookie('promocode');
+                var promoCodeValue = document.querySelector(MystaysBookingWidget.BookNowButton.Constants.PromoCodeField()).value;
 
 
 
@@ -3208,7 +3208,7 @@ var MystaysBookingWidget = {
             var childrenElementInfant = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.ChildElementInfant()).children[0];
             var roomsElement = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.RoomElement()).children[0];
 
-            var promoCodeValue = MystaysBookingWidget.Helper.GetCookie('promocode');
+            var promoCodeValue = document.querySelector(MystaysBookingWidget.BookNowButton.Constants.PromoCodeField()).value;
 
 
             var hotelcity = new Object();

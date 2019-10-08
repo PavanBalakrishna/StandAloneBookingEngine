@@ -3779,7 +3779,7 @@ var MystaysBookingWidget = {
                 var roomsElement = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.RoomElement()).children[0];
                 var hotelcity = JSON.parse(inputElement.getAttribute('data-HotelCity'));
                 
-                var promoCodeValue = MystaysBookingWidget.Helper.GetCookie('promocode');
+                var promoCodeValue = document.querySelector(MystaysBookingWidget.BookNowButton.Constants.PromoCodeField()).value;
 
 
 
@@ -3977,7 +3977,7 @@ var MystaysBookingWidget = {
             var childrenElementInfant = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.ChildElementInfant()).children[0];
             var roomsElement = document.querySelector(MystaysBookingWidget.GuestsWidget.Constants.RoomElement()).children[0];
 
-            var promoCodeValue = MystaysBookingWidget.Helper.GetCookie('promocode');
+            var promoCodeValue = document.querySelector(MystaysBookingWidget.BookNowButton.Constants.PromoCodeField()).value;
 
 
             var hotelcity = JSON.parse(inputElement.getAttribute('data-HotelCity'));
